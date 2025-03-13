@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+	.btn{
+    	color: white;
+    	background-color: black;
+        height: 90px;
+        width: 90px;
+        border: none;
+        font-size: 30px;
+       box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        border-radius: 20px;
+        cursor:pointer;
+    }
+    .up{
+    position:absolute;
+    left:120px;
+    top:160px;
+    }
+    .right{
+    position:absolute;
+    left:200px;
+    top:240px;
+    }
+    .down{
+    position:absolute;
+    left:120px;
+    top:320px;
+    }
+    .left{
+    position:absolute;
+    left:40px;
+    top:240px;
+    }
+    .jg{
+    background-color: red;
+    width: 50px;
+    height: 50px;
+    }
+    .jg{
+    background-color: red;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    }
+    .ps1{
+    background-color: green;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right:20px;
+    bottom:20px;
+    }
+    .ps2{
+    background-color: green;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    right:30px;
+    top:30px;
+    }
+    .ps3{
+    background-color: green;
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    right:140px;
+    bottom:90px;
+    }
+    .ps4{
+    background-color: green;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    right:250px;
+    bottom:50px;
+    }
+    .area{
+    background-color: Gainsboro;
+    height: 100%;
+    width:50%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    }
+    
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script> 
+$(document).ready(function(){
+  $("#up").click(function(){
+    $(".jg").animate({top: '-=30px'},50);
+    l();
+  });
+  $("#left").click(function(){
+    $(".jg").animate({left: '-=30px'},50);
+    l();
+  });
+  $("#down").click(function(){
+    $(".jg").animate({top: '+=30px'},50);
+    l();
+  });
+  $("#right").click(function(){
+    $(".jg").animate({left: '+=30px'},50);
+    l();
+  });
+  
+
+ function l(){
+	let positionj = $( ".jg" ).position();
+
+    let pjw =  $(".jg" ).width();
+    
+	let positionp1 = $( ".ps1" ).position();
+    let positionp2 = $( ".ps2" ).position();
+    let positionp3 = $( ".ps3" ).position();
+    let positionp4 = $( ".ps4" ).position();
+    
+    let p1w = $(".ps1" ).width();
+    let p2w = $(".ps2" ).width();
+    let p3w = $(".ps3" ).width();
+    let p4w = $(".ps4" ).width();
+    
+    
+    if(positionj.top <= positionp1.top + 30 && positionj.top >= positionp1.top - 30 && positionj.left <= positionp1.left + 30 && positionj.left >= positionp1.left - 30){
+    
+    	if(pjw >= p1w){
+   
+        	 $(".jg").css('height','65px');
+           	$(".jg").css('width','65px');
+            $( ".ps1" ).hide();
+        }else{
+        	$(".jg").hide()
+        }
+    }
+        if(positionj.top <= positionp2.top + 60 && positionj.top >= positionp2.top - 60 && positionj.left <= positionp2.left + 60 && positionj.left >= positionp2.left - 60){
+ 
+    	if(pjw >= p2w){
+   
+        	 $(".jg").css('height','85px');
+           	$(".jg").css('width','85px');
+            $( ".ps2" ).hide();
+        }else{
+        	$(".jg").hide()
+        }
+    }
+        if(positionj.top <= positionp3.top + 105 && positionj.top >= positionp3.top - 105 && positionj.left <= positionp3.left + 105 && positionj.left >= positionp3.left - 105){
+
+    	if(pjw >= p3w){
+   
+        	 $(".jg").css('height','105px');
+           	$(".jg").css('width','105px');
+            $( ".ps3" ).hide();
+        }else{
+        	$(".jg").hide()
+        }
+    }
+        if(positionj.top <= positionp4.top + 100 && positionj.top >= positionp4.top - 100 && positionj.left <= positionp4.left + 100 && positionj.left >= positionp4.left - 100){
+    
+    	if(pjw >= p4w){
+   
+        	 $(".jg").css('height','125px');
+           	$(".jg").css('width','125px');
+            $( ".ps4" ).hide();
+        }else{
+        	$(".jg").hide()
+        }
+    }
+ 
+ }
+  
+});
+</script> 
+</head>
+<body>
+
+<div class="joy">
+<button class="btn up" id="up">
+  up
+  </button><br>
+  
+<button class="btn left" id="left">
+  left
+  </button>
+  
+  <button class="btn right" id="right">
+  right
+  </button><br>
+  
+  <button class="btn down" id="down">
+  down
+  </button>
+</div>
+
+<div class="area">
+<div class='jg'></div>
+
+<div class='ps1'></div>
+<div class='ps2'></div>
+<div class='ps3'></div>
+<div class='ps4'></div>
+
+
+</div>
+
+</body>
+
+
+</html>
