@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+	.btn{
+    	color: white;
+    	background-color: rgb(0, 0, 0);
+        height: 90px;
+        width: 90px;
+        border: none;
+        font-size: 30px;
+       box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        border-radius: 20px;
+        cursor:pointer;
+    }
+  
+    .jg{
+    background-color: red;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    }
+    .area{
+    background-color: Gainsboro;
+    height: 100%;
+    width:100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    }
+    .comida{
+        width: 30px;
+        height: 30px;
+        position: absolute;
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script> 
+$(document).ready(function(){
+ 
+ gerarComida()
+
+  $(document).keypress(function (event){
+    if(event.which  == 97){
+      $(".jg").animate({left: '-=30px'},50);l()
+    }else if(event.which  == 119){
+      $(".jg").animate({top: '-=30px'},50);l()
+    }else if(event.which == 100){
+      $(".jg").animate({left: '+=30px'},50);l()
+    }else if(event.which == 115){
+      $(".jg").animate({top: '+=30px'},50);l()
+    }
+  })
+  
+
+ function l(){
+	let pJ = $( ".jg" ).position();
+
+    let pjw =  $(".jg" ).width();
+    
+	let pC = $( ".comida" ).position();
+    
+    let pcw = $(".comida" ).width();
+    
+    
+    if(pJ.top <= pC.top + 30 && pJ.top >= pC.top - 30 && pJ.left <= pC.left + 30 && pJ.left >= pC.left - 30){
+    
+        	$(".jg").css('width', pcw + 30)
+            gerarComida()
+    }
+ }
+
+ function gerarComida(){
+    let x = gerarNum()
+    let y = gerarNum()
+    let color = randomColor()
+
+    if($('.comida').length == 0){
+        let comida = document.createElement('div')
+        comida.classList.add('comida') 
+        console.log('1111')
+    }
+    console.log(x,y,color)
+    $('.comida').css('background-color', color)
+    $('.comida').css('left',`%${x}`)
+    $('.comida').css('top',`%${y}`)
+    $('.comida').css()
+ }
+  
+ function gerarNum(){
+    let num = Math.floor(Math.random() * 101)
+    return num
+ }
+
+ function randomColor() {
+    const red = gerarNum(0, 255)
+    const green = gerarNum(0, 255)
+    const blue = gerarNum(0, 255)
+    return `rgb(${red}, ${green}, ${blue})`
+ }
+
+});
+</script> 
+</head>
+<body>
+
+<div class="area">
+<div class='jg'></div>
+
+
+</div>
+
+</body>
+
+
+</html>
